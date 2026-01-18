@@ -15,19 +15,18 @@ companies as (
 -- 存在する会社コードのみを残す
 valid_prices as (
     select
-        sp.company_code,
-        sp.date,
-        sp.open_price,
-        sp.high_price,
-        sp.low_price,
-        sp.close_price,
-        sp.volume,
-        sp.turnover_value,
-        sp.adjusted_close
-    from stock_prices sp
-    inner join companies c on sp.company_code = c.company_code
+        stock_prices.company_code,
+        stock_prices.date,
+        stock_prices.open_price,
+        stock_prices.high_price,
+        stock_prices.low_price,
+        stock_prices.close_price,
+        stock_prices.volume,
+        stock_prices.turnover_value,
+        stock_prices.adjusted_close
+    from stock_prices
+    inner join companies 
+        using (company_code)
 )
 
 select * from valid_prices
-
-
