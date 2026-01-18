@@ -169,15 +169,16 @@ python -m jquants_pipeline.cli --help
 ### ローカル開発
 
 ```bash
-# 依存関係インストール
-uv sync
+# 開発用依存関係を含めてインストール
+uv sync --extra dev
 
 # 仮想環境を有効化
 source .venv/bin/activate
 
 # リント
 ruff check src/
-ruff format src/
+sqlfluff lint dbt_project/models/
+yamllint .
 ```
 
 ### 仮想環境について

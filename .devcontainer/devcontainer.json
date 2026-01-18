@@ -4,7 +4,7 @@
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && . $HOME/.local/bin/env && uv sync && mkdir -p data && curl -fsSL https://install.duckdb.org | sh",
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && . $HOME/.local/bin/env && uv sync --extra dev && mkdir -p data && curl -fsSL https://install.duckdb.org | sh",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -22,7 +22,8 @@
         "editor.formatOnSave": true,
         "[python]": {
           "editor.defaultFormatter": "charliermarsh.ruff"
-        }
+        },
+        "sqlfluff.executablePath": "${workspaceFolder}/.venv/bin/sqlfluff"
       }
     }
   },
