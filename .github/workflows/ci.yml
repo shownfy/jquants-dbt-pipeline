@@ -34,6 +34,55 @@ jobs:
       - name: Run ruff format check
         run: uv run ruff format --check src/
 
+      - name: Run yamllint
+        run: uv run yamllint -c .yamllint .github/ dbt_project/*.yml
+
+  sql-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Set up Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync --all-extras
+
+      - name: Create empty DuckDB for SQLFluff
+        run: |
+          mkdir -p data
+          uv run python -c "
+          import duckdb
+          conn = duckdb.connect('data/jquants.duckdb')
+          conn.execute('CREATE SCHEMA IF NOT EXISTS raw')
+          conn.execute('''
+            CREATE TABLE IF NOT EXISTS raw.listed_info (
+              \"Code\" VARCHAR, \"CoName\" VARCHAR, \"CoNameEn\" VARCHAR,
+              \"S17\" VARCHAR, \"S17Nm\" VARCHAR,
+              \"S33\" VARCHAR, \"S33Nm\" VARCHAR,
+              \"Scale\" VARCHAR, \"Mkt\" VARCHAR, \"MktNm\" VARCHAR
+            )
+          ''')
+          conn.execute('''
+            CREATE TABLE IF NOT EXISTS raw.stock_prices (
+              \"Code\" VARCHAR, \"Date\" VARCHAR, \"O\" DOUBLE, \"H\" DOUBLE,
+              \"L\" DOUBLE, \"C\" DOUBLE, \"Vo\" BIGINT, \"TV\" DOUBLE,
+              \"AF\" DOUBLE, \"AO\" DOUBLE, \"AH\" DOUBLE,
+              \"AL\" DOUBLE, \"AC\" DOUBLE
+            )
+          ''')
+          conn.close()
+          "
+
+      - name: Run SQLFluff lint
+        run: uv run sqlfluff lint dbt_project/models/ --dialect duckdb
+
   dbt-compile:
     runs-on: ubuntu-latest
     steps:
@@ -84,5 +133,3 @@ jobs:
       - name: dbt compile
         working-directory: dbt_project
         run: uv run dbt compile
-
-

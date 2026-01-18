@@ -22,7 +22,6 @@ env:
 jobs:
   extract-and-transform:
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -44,8 +43,10 @@ jobs:
       - name: Extract data from J Quants API
         env:
           JQUANTS_API_KEY: ${{ secrets.JQUANTS_API_KEY }}
+          DAYS: ${{ github.event.inputs.days || '30' }}
+          WEEKS_AGO: ${{ github.event.inputs.weeks_ago || '12' }}
         run: |
-          uv run python -m jquants_pipeline.cli --days ${{ github.event.inputs.days || '30' }} --weeks-ago ${{ github.event.inputs.weeks_ago || '12' }}
+          uv run python -m jquants_pipeline.cli --days "$DAYS" --weeks-ago "$WEEKS_AGO"
 
       - name: Run dbt
         working-directory: dbt_project
@@ -68,5 +69,3 @@ jobs:
     steps:
       - name: Notify failure
         run: echo "Pipeline failed. Check the logs for details."
-
-

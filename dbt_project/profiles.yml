@@ -9,5 +9,3 @@ jquants_pipeline:
       type: duckdb
       path: "../data/jquants.duckdb"
       threads: 4
-
-
