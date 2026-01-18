@@ -10,6 +10,10 @@ on:
         description: '取得する日数'
         required: false
         default: '30'
+      weeks_ago:
+        description: '何週間前から取得するか（Free プランは12週より前の期間が取得可能）'
+        required: false
+        default: '12'
 
 env:
   PYTHON_VERSION: '3.11'
@@ -41,7 +45,7 @@ jobs:
         env:
           JQUANTS_API_KEY: ${{ secrets.JQUANTS_API_KEY }}
         run: |
-          uv run python -m jquants_pipeline.cli --days ${{ github.event.inputs.days || '30' }}
+          uv run python -m jquants_pipeline.cli --days ${{ github.event.inputs.days || '30' }} --weeks-ago ${{ github.event.inputs.weeks_ago || '12' }}
 
       - name: Run dbt
         working-directory: dbt_project
