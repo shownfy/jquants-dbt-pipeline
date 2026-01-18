@@ -5,11 +5,12 @@ max_line_length = 100
 # LT05: Line too long (handled by max_line_length)
 # RF06: Quoted identifiers are required for J-Quants column names
 # RF04: Keywords like 'year', 'month' are acceptable in DuckDB
-exclude_rules = LT05, RF06, RF04
+# ST07: USING clause is valid and preferred for readability
+exclude_rules = LT05, RF06, RF04, ST07
 
 [sqlfluff:templater:dbt]
-project_dir = dbt_project
-profiles_dir = dbt_project
+project_dir = .
+profiles_dir = .
 
 [sqlfluff:indentation]
 indent_unit = space
