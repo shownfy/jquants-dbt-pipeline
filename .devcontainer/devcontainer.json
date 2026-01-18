@@ -10,10 +10,12 @@
         "innoverio.vscode-dbt-power-user",
         "mechatroner.rainbow-csv",
         "dorzey.vscode-sqlfluff",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "github.vscode-github-actions"
       ],
       "settings": {
         "python.defaultInterpreterPath": ".venv/bin/python",
+        "python.terminal.activateEnvironment": true,
         "editor.formatOnSave": true,
         "[python]": {
           "editor.defaultFormatter": "charliermarsh.ruff"
