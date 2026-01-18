@@ -25,7 +25,7 @@ valid_prices as (
         stock_prices.turnover_value,
         stock_prices.adjusted_close
     from stock_prices
-    inner join companies 
+    inner join companies
         using (company_code)
 )
 

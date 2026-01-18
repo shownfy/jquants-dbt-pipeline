@@ -20,5 +20,3 @@ select
     market_code,
     market_name
 from listed_info
-
-
