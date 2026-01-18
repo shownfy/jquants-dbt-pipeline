@@ -27,20 +27,26 @@ cp env.sample .env
 JQUANTS_API_KEY=your_api_key_here
 ```
 
-### 3. データ取得
+### 3. 仮想環境の有効化
+
+```bash
+source .venv/bin/activate
+```
+
+### 4. データ取得
 
 ```bash
 # 全データ取得（上場銘柄 + 株価）
-uv run python -m jquants_pipeline.cli
+python -m jquants_pipeline.cli
 
 # 上場銘柄のみ
-uv run python -m jquants_pipeline.cli --listed-only
+python -m jquants_pipeline.cli --listed-only
 
 # 株価のみ（日数・週指定）
-uv run python -m jquants_pipeline.cli --prices-only --days 14 --weeks-ago 13
+python -m jquants_pipeline.cli --prices-only --days 14 --weeks-ago 13
 ```
 
-### 4. dbt 実行
+### 5. dbt 実行
 
 ```bash
 cd dbt_project
@@ -55,7 +61,7 @@ dbt test --profiles-dir .
 > `--profiles-dir .` はデータベース接続設定（`profiles.yml`）をカレントディレクトリから読み込むオプションです。  
 > これにより、プロジェクト内の設定ファイルで DuckDB（`data/jquants.duckdb`）に接続します。
 
-### 5. データ確認
+### 6. データ確認
 
 Python を使って DuckDB の中身を確認できます：
 
@@ -142,7 +148,7 @@ df_prices = client.get_stock_prices(
 ## CLI オプション
 
 ```bash
-uv run python -m jquants_pipeline.cli --help
+python -m jquants_pipeline.cli --help
 ```
 
 | オプション | 説明 | デフォルト |
@@ -166,9 +172,25 @@ uv run python -m jquants_pipeline.cli --help
 # 依存関係インストール
 uv sync
 
+# 仮想環境を有効化
+source .venv/bin/activate
+
 # リント
-uv run ruff check src/
-uv run ruff format src/
+ruff check src/
+ruff format src/
+```
+
+### 仮想環境について
+
+このプロジェクトでは Python の仮想環境（`.venv`）を使用しています。
+
+仮想環境は、プロジェクトごとに独立した Python 環境を作る仕組みです。
+
+```
+パソコン
+├── プロジェクトA/.venv → pandas 1.5, numpy 1.24
+├── プロジェクトB/.venv → pandas 2.0, numpy 2.0
+└── このプロジェクト/.venv → dbt, duckdb, requests
 ```
 
 ## ライセンス
