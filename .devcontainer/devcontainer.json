@@ -8,7 +8,9 @@
         "ms-python.python",
         "charliermarsh.ruff",
         "innoverio.vscode-dbt-power-user",
-        "mechatroner.rainbow-csv"
+        "mechatroner.rainbow-csv",
+        "dorzey.vscode-sqlfluff",
+        "redhat.vscode-yaml"
       ],
       "settings": {
         "python.defaultInterpreterPath": ".venv/bin/python",
