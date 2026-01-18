@@ -1,0 +1,26 @@
+{
+  "name": "J Quants dbt Pipeline",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "postCreateCommand": "curl -LsSf https://astral.sh/uv/install.sh | sh && . $HOME/.local/bin/env && uv sync && mkdir -p data && curl -fsSL https://install.duckdb.org | sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "innoverio.vscode-dbt-power-user",
+        "mechatroner.rainbow-csv"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": ".venv/bin/python",
+        "editor.formatOnSave": true,
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff"
+        }
+      }
+    }
+  },
+  "remoteEnv": {
+    "JQUANTS_API_KEY": "${localEnv:JQUANTS_API_KEY}",
+    "PATH": "${containerEnv:PATH}:${containerEnv:HOME}/.local/bin"
+  }
+}

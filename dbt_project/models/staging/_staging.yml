@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: stg_listed_info
+    description: "上場銘柄情報（クレンジング済み）"
+    columns:
+      - name: company_code
+        description: "銘柄コード（5桁）"
+        tests:
+          - not_null
+          - unique
+      - name: company_name
+        description: "会社名"
+        tests:
+          - not_null
+      - name: company_name_english
+        description: "会社名（英語）"
+      - name: sector_17_code
+        description: "17業種コード"
+      - name: sector_17_name
+        description: "17業種名"
+      - name: sector_33_code
+        description: "33業種コード"
+      - name: sector_33_name
+        description: "33業種名"
+      - name: scale_category
+        description: "規模区分（TOPIX Large70等）"
+      - name: market_code
+        description: "市場コード"
+      - name: market_name
+        description: "市場名"
+
+  - name: stg_stock_prices
+    description: "株価データ（クレンジング済み）"
+    columns:
+      - name: company_code
+        description: "銘柄コード"
+        tests:
+          - not_null
+      - name: date
+        description: "日付"
+        tests:
+          - not_null
+      - name: open_price
+        description: "始値"
+      - name: high_price
+        description: "高値"
+      - name: low_price
+        description: "安値"
+      - name: close_price
+        description: "終値"
+      - name: volume
+        description: "出来高"
+      - name: turnover_value
+        description: "売買代金"
+      - name: adjustment_factor
+        description: "調整係数"
+      - name: adjusted_open
+        description: "調整後始値"
+      - name: adjusted_high
+        description: "調整後高値"
+      - name: adjusted_low
+        description: "調整後安値"
+      - name: adjusted_close
+        description: "調整後終値"
+
+sources:
+  - name: raw
+    schema: raw
+    tables:
+      - name: listed_info
+        description: "上場銘柄情報（生データ）"
+      - name: stock_prices
+        description: "株価データ（生データ）"
+
+

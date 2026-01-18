@@ -1,0 +1,68 @@
+name: J Quants Pipeline
+
+on:
+  schedule:
+    # 平日の朝9時（JST）に実行 = UTC 0:00
+    - cron: '0 0 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      days:
+        description: '取得する日数'
+        required: false
+        default: '30'
+
+env:
+  PYTHON_VERSION: '3.11'
+  UV_VERSION: '0.4.0'
+
+jobs:
+  extract-and-transform:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Set up Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Create data directory
+        run: mkdir -p data
+
+      - name: Extract data from J Quants API
+        env:
+          JQUANTS_API_KEY: ${{ secrets.JQUANTS_API_KEY }}
+        run: |
+          uv run python -m jquants_pipeline.cli --days ${{ github.event.inputs.days || '30' }}
+
+      - name: Run dbt
+        working-directory: dbt_project
+        run: |
+          uv run dbt deps
+          uv run dbt run
+          uv run dbt test
+
+      - name: Upload DuckDB artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jquants-duckdb
+          path: data/jquants.duckdb
+          retention-days: 7
+
+  notify-on-failure:
+    needs: extract-and-transform
+    runs-on: ubuntu-latest
+    if: failure()
+    steps:
+      - name: Notify failure
+        run: echo "Pipeline failed. Check the logs for details."
+
+

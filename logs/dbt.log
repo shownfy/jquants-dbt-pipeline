@@ -1,0 +1,133 @@
+[0m02:26:32.175356 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8c5c3d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8c5c31d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff89592390>]}
+
+
+============================== 02:26:32.242106 | 66fa0d13-14a4-4cc5-8e81-cadda1126540 ==============================
+[0m02:26:32.242106 [info ] [MainThread]: Running with dbt=1.11.2
+[0m02:26:32.242845 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'static_parser': 'True', 'version_check': 'True', 'quiet': 'False', 'log_path': 'logs', 'use_colors': 'True', 'cache_selected_only': 'False', 'empty': 'None', 'profiles_dir': '/home/vscode/.dbt', 'fail_fast': 'False', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'debug': 'False', 'no_print': 'None', 'use_experimental_parser': 'False', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'introspect': 'True', 'invocation_command': 'dbt debug', 'target_path': 'None', 'printer_width': '80', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None'}
+[0m02:26:32.298784 [info ] [MainThread]: dbt version: 1.11.2
+[0m02:26:32.299115 [info ] [MainThread]: python version: 3.11.14
+[0m02:26:32.299351 [info ] [MainThread]: python path: /workspaces/jquants-dbt-pipeline/.venv/bin/python3
+[0m02:26:32.299561 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-aarch64-with-glibc2.41
+[0m02:26:32.299787 [info ] [MainThread]: Using profiles dir at /home/vscode/.dbt
+[0m02:26:32.300015 [info ] [MainThread]: Using profiles.yml file at /home/vscode/.dbt/profiles.yml
+[0m02:26:32.300242 [info ] [MainThread]: Using dbt_project.yml file at /workspaces/jquants-dbt-pipeline/dbt_project.yml
+[0m02:26:32.300447 [info ] [MainThread]: Configuration:
+[0m02:26:32.300661 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m02:26:32.300849 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m02:26:32.301019 [info ] [MainThread]: Required dependencies:
+[0m02:26:32.301228 [debug] [MainThread]: Executing "git --help"
+[0m02:26:32.304316 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m02:26:32.304709 [debug] [MainThread]: STDERR: "b''"
+[0m02:26:32.305361 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m02:26:32.305730 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m02:26:32.306161 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m02:26:32.306452 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/vscode/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m02:26:32.306803 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </workspaces/jquants-dbt-pipeline/dbt_project.yml> not found
+
+[0m02:26:32.308830 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.18436417, "process_in_blocks": "64", "process_kernel_time": 0.490377, "process_mem_max_rss": "122628", "process_out_blocks": "31352", "process_user_time": 1.974571}
+[0m02:26:32.309659 [debug] [MainThread]: Command `dbt debug` failed at 02:26:32.309555 after 0.19 seconds
+[0m02:26:32.310141 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff89462110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8e64ccd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff8e64cd10>]}
+[0m02:26:32.310711 [debug] [MainThread]: Flushing usage events
+[0m02:26:33.777483 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:26:28.498668 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7b6aa890>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7e807050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7b6c8550>]}
+
+
+============================== 03:26:28.504165 | d602d71a-5fa9-4103-993e-bd7f682864dd ==============================
+[0m03:26:28.504165 [info ] [MainThread]: Running with dbt=1.11.2
+[0m03:26:28.504941 [debug] [MainThread]: running dbt with arguments {'partial_parse': 'True', 'cache_selected_only': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'fail_fast': 'False', 'debug': 'False', 'static_parser': 'True', 'write_json': 'True', 'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'use_experimental_parser': 'False', 'target_path': 'None', 'use_colors': 'True', 'invocation_command': 'dbt debug', 'empty': 'None', 'quiet': 'False', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'profiles_dir': '/home/vscode/.dbt', 'no_print': 'None', 'log_path': 'logs', 'log_format': 'default', 'introspect': 'True'}
+[0m03:26:28.515639 [info ] [MainThread]: dbt version: 1.11.2
+[0m03:26:28.516011 [info ] [MainThread]: python version: 3.11.14
+[0m03:26:28.516407 [info ] [MainThread]: python path: /workspaces/jquants-dbt-pipeline/.venv/bin/python3
+[0m03:26:28.516636 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-aarch64-with-glibc2.41
+[0m03:26:28.516890 [info ] [MainThread]: Using profiles dir at /home/vscode/.dbt
+[0m03:26:28.517131 [info ] [MainThread]: Using profiles.yml file at /home/vscode/.dbt/profiles.yml
+[0m03:26:28.517426 [info ] [MainThread]: Using dbt_project.yml file at /workspaces/jquants-dbt-pipeline/dbt_project.yml
+[0m03:26:28.517810 [info ] [MainThread]: Configuration:
+[0m03:26:28.518013 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m03:26:28.518276 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m03:26:28.518522 [info ] [MainThread]: Required dependencies:
+[0m03:26:28.518821 [debug] [MainThread]: Executing "git --help"
+[0m03:26:28.520360 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m03:26:28.520715 [debug] [MainThread]: STDERR: "b''"
+[0m03:26:28.521168 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m03:26:28.521619 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m03:26:28.521943 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m03:26:28.522204 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/vscode/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m03:26:28.522428 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </workspaces/jquants-dbt-pipeline/dbt_project.yml> not found
+
+[0m03:26:28.523175 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.050810084, "process_in_blocks": "0", "process_kernel_time": 0.248861, "process_mem_max_rss": "104356", "process_out_blocks": "10", "process_user_time": 0.799768}
+[0m03:26:28.523804 [debug] [MainThread]: Command `dbt debug` failed at 03:26:28.523717 after 0.05 seconds
+[0m03:26:28.524176 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7b6ab050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7b6ff050>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff7b6ff590>]}
+[0m03:26:28.524523 [debug] [MainThread]: Flushing usage events
+[0m03:26:29.359799 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m03:30:33.727523 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95ca1ed0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff960e7d90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff98e0e050>]}
+
+
+============================== 03:30:33.745634 | 4bc41577-7370-4d67-822c-d3342ac6987e ==============================
+[0m03:30:33.745634 [info ] [MainThread]: Running with dbt=1.11.2
+[0m03:30:33.746566 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'log_path': 'logs', 'introspect': 'True', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'quiet': 'False', 'version_check': 'True', 'invocation_command': 'dbt run --profiles-dir .', 'indirect_selection': 'eager', 'empty': 'False', 'send_anonymous_usage_stats': 'True', 'fail_fast': 'False', 'printer_width': '80', 'warn_error': 'None', 'debug': 'False', 'use_experimental_parser': 'False', 'no_print': 'None', 'use_colors': 'True', 'log_format': 'default', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'profiles_dir': '.', 'cache_selected_only': 'False'}
+[0m03:30:33.748062 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /workspaces/jquants-dbt-pipeline/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m03:30:33.749761 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.06429142, "process_in_blocks": "0", "process_kernel_time": 0.347273, "process_mem_max_rss": "104340", "process_out_blocks": "3", "process_user_time": 0.880514}
+[0m03:30:33.750479 [debug] [MainThread]: Command `dbt run` failed at 03:30:33.750379 after 0.07 seconds
+[0m03:30:33.751000 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95d61fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff95d63410>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9ad16250>]}
+[0m03:30:33.751559 [debug] [MainThread]: Flushing usage events
+[0m03:30:35.608813 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m04:42:55.978320 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9445ccd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9445d010>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff9450ec50>]}
+
+
+============================== 04:42:55.985996 | a2aaecdf-a857-41e3-9362-717c41366c87 ==============================
+[0m04:42:55.985996 [info ] [MainThread]: Running with dbt=1.11.2
+[0m04:42:55.986464 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'cache_selected_only': 'False', 'quiet': 'False', 'log_path': 'logs', 'empty': 'None', 'static_parser': 'True', 'use_colors': 'True', 'log_format': 'default', 'warn_error': 'None', 'log_cache_events': 'False', 'partial_parse': 'True', 'debug': 'False', 'version_check': 'True', 'profiles_dir': '/home/vscode/.dbt', 'printer_width': '80', 'use_experimental_parser': 'False', 'no_print': 'None', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'indirect_selection': 'eager', 'fail_fast': 'False', 'introspect': 'True', 'invocation_command': 'dbt debug'}
+[0m04:42:56.005454 [info ] [MainThread]: dbt version: 1.11.2
+[0m04:42:56.005872 [info ] [MainThread]: python version: 3.11.14
+[0m04:42:56.006325 [info ] [MainThread]: python path: /workspaces/jquants-dbt-pipeline/.venv/bin/python3
+[0m04:42:56.006933 [info ] [MainThread]: os info: Linux-6.10.14-linuxkit-aarch64-with-glibc2.41
+[0m04:42:56.007397 [info ] [MainThread]: Using profiles dir at /home/vscode/.dbt
+[0m04:42:56.007814 [info ] [MainThread]: Using profiles.yml file at /home/vscode/.dbt/profiles.yml
+[0m04:42:56.008102 [info ] [MainThread]: Using dbt_project.yml file at /workspaces/jquants-dbt-pipeline/dbt_project.yml
+[0m04:42:56.008589 [info ] [MainThread]: Configuration:
+[0m04:42:56.008899 [info ] [MainThread]:   profiles.yml file [[31mERROR not found[0m]
+[0m04:42:56.009291 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m04:42:56.009531 [info ] [MainThread]: Required dependencies:
+[0m04:42:56.009780 [debug] [MainThread]: Executing "git --help"
+[0m04:42:56.012251 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--no-lazy-fetch]\n           [--no-optional-locks] [--no-advice] [--bare] [--git-dir=<path>]\n           [--work-tree=<path>] [--namespace=<name>] [--config-env=<name>=<envvar>]\n           <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone      Clone a repository into a new directory\n   init       Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add        Add file contents to the index\n   mv         Move or rename a file, a directory, or a symlink\n   restore    Restore working tree files\n   rm         Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect     Use binary search to find the commit that introduced a bug\n   diff       Show changes between commits, commit and working tree, etc\n   grep       Print lines matching a pattern\n   log        Show commit logs\n   show       Show various types of objects\n   status     Show the working tree status\n\ngrow, mark and tweak your common history\n   backfill   Download missing objects in a partial clone\n   branch     List, create, or delete branches\n   commit     Record changes to the repository\n   merge      Join two or more development histories together\n   rebase     Reapply commits on top of another base tip\n   reset      Reset current HEAD to the specified state\n   switch     Switch branches\n   tag        Create, list, delete or verify tags\n\ncollaborate (see also: git help workflows)\n   fetch      Download objects and refs from another repository\n   pull       Fetch from and integrate with another repository or a local branch\n   push       Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m04:42:56.012736 [debug] [MainThread]: STDERR: "b''"
+[0m04:42:56.013130 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m04:42:56.013382 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m04:42:56.014838 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m04:42:56.015232 [info ] [MainThread]: dbt looked for a profiles.yml file in /home/vscode/.dbt/profiles.yml, but did
+not find one. For more information on configuring your profile, consult the
+documentation:
+
+https://docs.getdbt.com/docs/configure-your-profile
+
+
+[0m04:42:56.015803 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </workspaces/jquants-dbt-pipeline/dbt_project.yml> not found
+
+[0m04:42:56.017124 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.064572416, "process_in_blocks": "0", "process_kernel_time": 0.570878, "process_mem_max_rss": "104468", "process_out_blocks": "10", "process_user_time": 0.882999}
+[0m04:42:56.017721 [debug] [MainThread]: Command `dbt debug` failed at 04:42:56.017644 after 0.07 seconds
+[0m04:42:56.018208 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff97539d50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff99379fd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0xffff94465650>]}
+[0m04:42:56.018611 [debug] [MainThread]: Flushing usage events
+[0m04:42:57.826034 [debug] [MainThread]: An error was encountered while trying to flush usage events

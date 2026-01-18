@@ -1,0 +1,13 @@
+jquants_pipeline:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "../data/jquants.duckdb"
+      threads: 4
+    prod:
+      type: duckdb
+      path: "../data/jquants.duckdb"
+      threads: 4
+
+

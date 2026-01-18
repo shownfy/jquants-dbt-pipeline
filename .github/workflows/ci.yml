@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  PYTHON_VERSION: '3.11'
+  UV_VERSION: '0.4.0'
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Set up Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync --all-extras
+
+      - name: Run ruff check
+        run: uv run ruff check src/
+
+      - name: Run ruff format check
+        run: uv run ruff format --check src/
+
+  dbt-compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: ${{ env.UV_VERSION }}
+
+      - name: Set up Python
+        run: uv python install ${{ env.PYTHON_VERSION }}
+
+      - name: Install dependencies
+        run: uv sync
+
+      - name: Create empty DuckDB for compilation
+        run: |
+          mkdir -p data
+          uv run python -c "
+          import duckdb
+          conn = duckdb.connect('data/jquants.duckdb')
+          conn.execute('CREATE SCHEMA IF NOT EXISTS raw')
+          conn.execute('''
+            CREATE TABLE IF NOT EXISTS raw.listed_info (
+              \"Code\" VARCHAR, \"CompanyName\" VARCHAR, \"CompanyNameEnglish\" VARCHAR,
+              \"Sector17Code\" VARCHAR, \"Sector17CodeName\" VARCHAR,
+              \"Sector33Code\" VARCHAR, \"Sector33CodeName\" VARCHAR,
+              \"ScaleCategory\" VARCHAR, \"MarketCode\" VARCHAR, \"MarketCodeName\" VARCHAR
+            )
+          ''')
+          conn.execute('''
+            CREATE TABLE IF NOT EXISTS raw.stock_prices (
+              \"Code\" VARCHAR, \"Date\" VARCHAR, \"Open\" DOUBLE, \"High\" DOUBLE,
+              \"Low\" DOUBLE, \"Close\" DOUBLE, \"Volume\" BIGINT, \"TurnoverValue\" DOUBLE,
+              \"AdjustmentFactor\" DOUBLE, \"AdjustmentOpen\" DOUBLE, \"AdjustmentHigh\" DOUBLE,
+              \"AdjustmentLow\" DOUBLE, \"AdjustmentClose\" DOUBLE
+            )
+          ''')
+          conn.close()
+          "
+
+      - name: dbt deps
+        working-directory: dbt_project
+        run: uv run dbt deps
+
+      - name: dbt compile
+        working-directory: dbt_project
+        run: uv run dbt compile
+
+
