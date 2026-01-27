@@ -24,7 +24,7 @@ from typing import TYPE_CHECKING
 
 import pandas as pd
 import requests
-from dotenv import load_dotenv
+from dotenv import find_dotenv, load_dotenv
 
 if TYPE_CHECKING:
     from collections.abc import Iterator
@@ -107,7 +107,7 @@ class JQuantsClient:
         Raises:
             ValueError: 環境変数が設定されていない場合
         """
-        load_dotenv()
+        load_dotenv(find_dotenv(usecwd=True), override=True)
         api_key = os.environ.get(env_var)
 
         if not api_key:
